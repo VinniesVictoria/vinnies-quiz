@@ -736,14 +736,11 @@ function showResult() {
   const shareText = encodeURIComponent(`I just found out I'm ${p.name} — a ${p.role}. What's your calling? Take the Vinnies quiz:`);
 
   resultCard.innerHTML = `
-    <div class="result-hero" style="background: ${p.bgColor}; ${p.image ? `background-image: url(${p.image}); background-size: cover; background-position: center top;` : ''}">
-      <div style="position:absolute; inset:0; background:rgba(0,74,153,0.65);"></div>
-      <div style="position:relative;">
+    ${p.image ? `<div style="width:100%; line-height:0;"><img src="${p.image}" alt="${p.name}" style="width:100%; height:auto; display:block; border-radius:20px 20px 0 0;"></div>` : ''}
+    <div class="result-hero" style="background: ${p.bgColor}; border-radius: ${p.image ? '0' : '20px 20px'} 0 0;">
       <div class="result-eyebrow">Your calling is...</div>
-      <div class="result-persona-name">${p.name}</div>
-      <div class="result-role">${p.role}</div>
+      <div class="result-role" style="font-size:22px; font-weight:800; color:white; margin-bottom:16px;">${p.role}</div>
       <div class="result-tagline">"${p.tagline}"</div>
-      </div>
     </div>
     <div class="result-body">
       <div class="result-section">
