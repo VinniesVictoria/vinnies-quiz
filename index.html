@@ -8,7 +8,7 @@
 <!-- Default Open Graph tags — updated dynamically per persona -->
 <meta property="og:title" content="What's Your Calling? | Vinnies Victoria">
 <meta property="og:description" content="Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz.">
-<meta property="og:image" content="https://cms.vinnies.org.au/media/op3p1ww5/what-s-your-calling.png">
+<meta property="og:image" content="https://cms.vinnies.org.au/media/gofnacda/what-s-your-calling-1.png">
 <meta property="og:url" content="https://vinnies-quiz.vercel.app">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vinnies Victoria">
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What's Your Calling? | Vinnies Victoria">
 <meta name="twitter:description" content="Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz.">
-<meta name="twitter:image" content="https://cms.vinnies.org.au/media/op3p1ww5/what-s-your-calling.png">
+<meta name="twitter:image" content="https://cms.vinnies.org.au/media/gofnacda/what-s-your-calling-1.png">
 
 <!-- Dynamic OG tags based on shared persona URL -->
 <script>
@@ -475,14 +475,14 @@
 
 <!-- HERO IMAGE -->
 <div style="width:100%; line-height:0;">
-  <img src="https://cms.vinnies.org.au/media/op3p1ww5/what-s-your-calling.png" alt="What's Your Calling? National Volunteer Week 2026" style="width:100%; height:auto; display:block;">
+  <img src="https://cms.vinnies.org.au/media/gofnacda/what-s-your-calling-1.png" alt="What's Your Calling? National Volunteer Week 2026" style="width:100%; height:auto; display:block;">
 </div>
 
 <!-- HERO INTRO -->
 <div style="background:#004A99; text-align:center; padding:32px 24px 40px;">
   <p style="font-family:'Montserrat',sans-serif; font-size:18px; line-height:1.6; color:white; font-weight:400; max-width:540px; margin:0 auto 20px; opacity:0.95;">Find out where you'd thrive as a <strong style="font-weight:800;">Vinnies volunteer.</strong></p>
   <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:8px 20px; font-family:'Montserrat',sans-serif; font-size:14px; font-weight:500; color:white; margin-bottom:16px;">&#9201; <span style="color:#FFEE00; font-weight:700;">2 minutes</span> to discover your happiest self*</div>
-  <p style="font-family:'Montserrat',sans-serif; font-size:13px; color:rgba(255,255,255,0.85); max-width:480px; margin:0 auto; line-height:1.7;">💛 Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Source: State of Volunteering Victoria 2025 Report.</p>
+  <p style="font-family:'Montserrat',sans-serif; font-size:13px; color:rgba(255,255,255,0.85); max-width:480px; margin:0 auto; line-height:1.7;">💛 *Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Source: State of Volunteering Victoria 2025 Report.</p>
 </div>
 
 <!-- QUIZ -->
@@ -673,6 +673,9 @@ function renderQuestion(index) {
   const card = document.getElementById('question-card');
   const letters = ['A','B','C','D','E'];
 
+  // Clear card first to prevent button state bleed on mobile
+  card.innerHTML = '';
+
   // Progress
   const pct = Math.round((index / questions.length) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
@@ -683,6 +686,9 @@ function renderQuestion(index) {
   card.style.display = 'block';
   document.getElementById('result-card').style.display = 'none';
   document.getElementById('loading').style.display = 'none';
+
+  // Scroll to top of card on mobile
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   card.innerHTML = `
     <div class="question-number">Question ${index + 1} of ${questions.length}</div>
@@ -819,7 +825,7 @@ function showResult() {
           </a>
         </div>
       </div>
-      <button class="retake-btn" onclick="retakeQuiz()">Take the quiz again</button>
+      <button class="retake-btn" onclick="retakeQuiz()" style="margin-top:20px; padding:14px 32px; border-radius:100px; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; cursor:pointer; border:2px solid #004A99; background:white; color:#004A99; width:100%; transition:all 0.2s ease;" onmouseover="this.style.background='#004A99'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='#004A99';">Take the quiz again</button>
     </div>
   `;
 
