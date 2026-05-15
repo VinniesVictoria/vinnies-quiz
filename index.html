@@ -59,7 +59,7 @@
     --vinnies-blue: #004A99;
     --vinnies-yellow: #FFEE00;
     --white: #ffffff;
-    --off-white: #F8F7F2;
+    --off-white: #ffffff;
     --dark: #1a1a1a;
     --gs-color: #FFEE00;
     --gl-color: #2A9D8F;
@@ -84,7 +84,7 @@
   .quiz-container {
     max-width: 720px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 32px 24px 48px;
   }
 
   /* PROGRESS */
@@ -687,8 +687,10 @@ function renderQuestion(index) {
   document.getElementById('result-card').style.display = 'none';
   document.getElementById('loading').style.display = 'none';
 
-  // Scroll to top of card on mobile
-  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Only scroll on mobile to avoid jarring jump on desktop
+  if (window.innerWidth < 768) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   card.innerHTML = `
     <div class="question-number">Question ${index + 1} of ${questions.length}</div>
