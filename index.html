@@ -729,8 +729,9 @@ function selectAnswer(optionIndex) {
     personas_scored: option.personas.join(',')
   });
 
-  // Score
-  option.personas.forEach(p => { scores[p] += 1; });
+  // Score — Q5 counts double as it's the tiebreaker for GL, GI, GN, GC
+  const weight = (currentQ === 4) ? 3 : 1;
+  option.personas.forEach(p => { scores[p] += weight; });
 
   // Next
   setTimeout(() => {
