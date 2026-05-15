@@ -37,90 +37,7 @@
     min-height: 100vh;
   }
 
-  /* HEADER */
-  .header {
-    background: var(--vinnies-blue);
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .header img {
-    height: 48px;
-    filter: brightness(0) invert(1);
-  }
-
-  /* HERO */
-  .hero {
-    background: var(--vinnies-blue);
-    color: white;
-    padding: 60px 24px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: var(--off-white);
-    clip-path: ellipse(55% 100% at 50% 100%);
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--vinnies-yellow);
-    margin-bottom: 16px;
-  }
-
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(48px, 8vw, 90px);
-    font-weight: 900;
-    line-height: 1.0;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-  }
-
-  .hero h1 span {
-    color: var(--vinnies-yellow);
-  }
-
-  .hero p {
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 540px;
-    margin: 0 auto 32px;
-    opacity: 0.9;
-    font-weight: 300;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 100px;
-    padding: 8px 20px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .hero-badge span {
-    color: var(--vinnies-yellow);
-    font-weight: 700;
-  }
+  /* HERO IMAGE */
 
   /* QUIZ CONTAINER */
   .quiz-container {
@@ -466,15 +383,7 @@
 
   .retake-btn:hover { color: var(--vinnies-blue); }
 
-  /* FOOTER */
-  .footer {
-    background: var(--vinnies-blue);
-    color: white;
-    text-align: center;
-    padding: 24px;
-    font-size: 13px;
-    opacity: 0.9;
-  }
+
 
   /* LOADING */
   .loading {
@@ -523,20 +432,10 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <img src="/mnt/user-data/uploads/Vinnies_Good_Works_PMS-288.png" alt="Vinnies good works" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-  <div style="display:none; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:900;">Vinnies <span style="color:var(--vinnies-yellow)">good works</span></div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">National Volunteer Week 2026</div>
-  <h1>What's Your<br><span>Calling?</span></h1>
-  <p>Find out where you'd thrive as a Vinnies volunteer.</p>
-  <div class="hero-badge">⏱ <span>2 minutes</span> to discover your happiest self*</div>
-  <p style="font-size:12px; opacity:0.6; margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto;">*Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Source: State of Volunteering Victoria 2025 Report.</p>
-</section>
+<!-- HERO IMAGE -->
+<div style="width:100%; line-height:0;">
+  <img src="https://cms.vinnies.org.au/media/op3p1ww5/what-s-your-calling.png" alt="What's Your Calling? National Volunteer Week 2026" style="width:100%; height:auto; display:block;">
+</div>
 
 <!-- QUIZ -->
 <div class="quiz-container">
@@ -568,10 +467,7 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2026 St Vincent de Paul Society Victoria. All rights reserved.</p>
-</footer>
+
 
 <script>
 // ─── DATA ───────────────────────────────────────────────────────────────────
