@@ -4,6 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What's Your Calling? | Vinnies Victoria</title>
+
+<!-- Default Open Graph tags — updated dynamically per persona -->
+<meta property="og:title" content="What's Your Calling? | Vinnies Victoria">
+<meta property="og:description" content="Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz.">
+<meta property="og:image" content="https://cms.vinnies.org.au/media/op3p1ww5/what-s-your-calling.png">
+<meta property="og:url" content="https://vinnies-quiz.vercel.app">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vinnies Victoria">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What's Your Calling? | Vinnies Victoria">
+<meta name="twitter:description" content="Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz.">
+<meta name="twitter:image" content="https://cms.vinnies.org.au/media/op3p1ww5/what-s-your-calling.png">
+
+<!-- Dynamic OG tags based on shared persona URL -->
+<script>
+(function() {
+  var personaImages = {
+    GS: { image: "https://cms.vinnies.org.au/media/czfngtz0/the-good-sort.png", title: "I'm The Good Sort — a Vinnies Shops Volunteer. What's your calling?", desc: "Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz." },
+    GL: { image: "https://cms.vinnies.org.au/media/ajxl1uba/the-good-listener.png", title: "I'm The Good Listener — a Vinnies Call Centre Volunteer. What's your calling?", desc: "Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz." },
+    GM: { image: "https://cms.vinnies.org.au/media/zsxfqx0g/the-good-mate.png", title: "I'm The Good Mate — a Vinnies Soup Van Volunteer. What's your calling?", desc: "Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz." },
+    GI: { image: "https://cms.vinnies.org.au/media/cwcgvr5s/the-good-influence.png", title: "I'm The Good Influence — a Vinnies Education Volunteer. What's your calling?", desc: "Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz." },
+    GC: { image: "https://cms.vinnies.org.au/media/a4fhvglu/the-good-counsel.png", title: "I'm The Good Counsel — a Vinnies NILs Volunteer. What's your calling?", desc: "Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz." },
+    GN: { image: "https://cms.vinnies.org.au/media/0uzn0tyl/the-good-neighbour.png", title: "I'm The Good Neighbour — a Vinnies Member. What's your calling?", desc: "Find out where you'd thrive as a Vinnies volunteer. Take the 2-minute quiz." }
+  };
+  var params = new URLSearchParams(window.location.search);
+  var persona = params.get('persona');
+  if (persona && personaImages[persona]) {
+    var p = personaImages[persona];
+    document.querySelector('meta[property="og:title"]').setAttribute('content', p.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', p.desc);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', p.image);
+    document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', p.title);
+    document.querySelector('meta[name="twitter:description"]').setAttribute('content', p.desc);
+    document.querySelector('meta[name="twitter:image"]').setAttribute('content', p.image);
+    document.title = p.title;
+  }
+})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKLFTDW6WD"></script>
