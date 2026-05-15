@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Your Calling? | Vinnies Victoria</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EKLFTDW6WD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EKLFTDW6WD');
+</script>
+<style>
+  :root {
+    --vinnies-blue: #004A99;
+    --vinnies-yellow: #FFEE00;
+    --white: #ffffff;
+    --off-white: #F8F7F2;
+    --dark: #1a1a1a;
+    --gs-color: #FFEE00;
+    --gl-color: #2A9D8F;
+    --gm-color: #E76F51;
+    --gi-color: #57A85A;
+    --gc-color: #6A4C93;
+    --gn-color: #004A99;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--vinnies-blue);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header img {
+    height: 48px;
+    filter: brightness(0) invert(1);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--vinnies-blue);
+    color: white;
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--off-white);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vinnies-yellow);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(48px, 8vw, 90px);
+    font-weight: 900;
+    line-height: 1.0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  .hero h1 span {
+    color: var(--vinnies-yellow);
+  }
+
+  .hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 540px;
+    margin: 0 auto 32px;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .hero-badge span {
+    color: var(--vinnies-yellow);
+    font-weight: 700;
+  }
+
+  /* QUIZ CONTAINER */
+  .quiz-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    margin-bottom: 40px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vinnies-blue);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #e0ddd4;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--vinnies-blue);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: var(--vinnies-yellow);
+    border-radius: 20px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 40px rgba(0,74,153,0.12);
+    animation: fadeUp 0.4s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .question-number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vinnies-blue);
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+
+  .question-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--vinnies-blue);
+    margin-bottom: 32px;
+  }
+
+  /* OPTIONS */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    border: 2px solid rgba(0,74,153,0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+    text-align: left;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .option:hover {
+    border-color: var(--vinnies-blue);
+    background: white;
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #d4cfc4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--vinnies-blue);
+    transition: all 0.2s ease;
+  }
+
+  .option:hover .option-letter {
+    background: var(--vinnies-blue);
+    border-color: var(--vinnies-blue);
+    color: white;
+  }
+
+  .option-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--dark);
+    font-weight: 400;
+    padding-top: 4px;
+  }
+
+  .option.selected {
+    border-color: var(--vinnies-blue);
+    background: white;
+  }
+
+  .option.selected .option-letter {
+    background: var(--vinnies-blue);
+    border-color: var(--vinnies-blue);
+    color: white;
+  }
+
+  /* RESULT CARD */
+  .result-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    animation: fadeUp 0.5s ease;
+    display: none;
+  }
+
+  .result-hero {
+    padding: 48px 40px 40px;
+    color: white;
+    position: relative;
+  }
+
+  .result-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+  }
+
+  .result-hero > * { position: relative; }
+
+  .result-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+
+  .result-persona-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    color: var(--vinnies-yellow);
+  }
+
+  .result-role {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-bottom: 24px;
+  }
+
+  .result-tagline {
+    font-size: 17px;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0.95;
+    font-weight: 300;
+    border-left: 3px solid rgba(255,255,255,0.4);
+    padding-left: 16px;
+  }
+
+  .result-body {
+    background: white;
+    padding: 40px;
+  }
+
+  .result-section {
+    margin-bottom: 32px;
+  }
+
+  .result-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vinnies-blue);
+    margin-bottom: 12px;
+  }
+
+  .result-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    font-weight: 400;
+  }
+
+  .result-divider {
+    height: 1px;
+    background: #f0ece2;
+    margin: 32px 0;
+  }
+
+  /* CTA BUTTON */
+  .cta-button {
+    display: inline-block;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cta-primary {
+    color: var(--dark);
+    background: var(--vinnies-yellow);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,238,0,0.4);
+  }
+
+  .cta-flag {
+    background: #fff3cd;
+    border: 2px dashed #f0a500;
+    color: #856404;
+    font-size: 14px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  /* SHARE */
+  .share-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid #f0ece2;
+  }
+
+  .share-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .share-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .share-fb {
+    border-color: #1877F2;
+    color: #1877F2;
+    background: white;
+  }
+
+  .share-fb:hover { background: #1877F2; color: white; }
+
+  .share-li {
+    border-color: #0A66C2;
+    color: #0A66C2;
+    background: white;
+  }
+
+  .share-li:hover { background: #0A66C2; color: white; }
+
+  .share-ig {
+    border-color: #E1306C;
+    color: #E1306C;
+    background: white;
+  }
+
+  .share-ig:hover { background: #E1306C; color: white; }
+
+  /* RETAKE */
+  .retake-btn {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 500;
+    background: none;
+    border: none;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .retake-btn:hover { color: var(--vinnies-blue); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--vinnies-blue);
+    color: white;
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  /* LOADING */
+  .loading {
+    text-align: center;
+    padding: 60px 24px;
+  }
+
+  .loading-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .loading-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--vinnies-blue);
+    animation: bounce 0.6s ease infinite;
+  }
+
+  .loading-dots span:nth-child(2) { animation-delay: 0.1s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.2s; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(-8px); opacity: 1; }
+  }
+
+  .loading p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--vinnies-blue);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .question-card { padding: 32px 24px; }
+    .result-hero { padding: 36px 24px 32px; }
+    .result-body { padding: 28px 24px; }
+    .share-buttons { flex-direction: column; }
+    .share-btn { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <img src="/mnt/user-data/uploads/Vinnies_Good_Works_PMS-288.png" alt="Vinnies good works" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+  <div style="display:none; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:900;">Vinnies <span style="color:var(--vinnies-yellow)">good works</span></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">National Volunteer Week 2026</div>
+  <h1>What's Your<br><span>Calling?</span></h1>
+  <p>Find out where you'd thrive as a Vinnies volunteer.</p>
+  <div class="hero-badge">⏱ <span>2 minutes</span> to discover your happiest self*</div>
+  <p style="font-size:12px; opacity:0.6; margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto;">*Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Source: State of Volunteering Victoria 2025 Report.</p>
+</section>
+
+<!-- QUIZ -->
+<div class="quiz-container">
+  <div id="quiz-wrap">
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Question 1 of 5</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- QUESTION CARD -->
+    <div class="question-card" id="question-card"></div>
+
+    <!-- LOADING -->
+    <div class="loading" id="loading" style="display:none;">
+      <div class="loading-dots"><span></span><span></span><span></span></div>
+      <p>Finding your calling...</p>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-card" id="result-card"></div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 St Vincent de Paul Society Victoria. All rights reserved.</p>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+const personas = {
+  GS: {
+    name: "The Good Sort",
+    role: "Vinnies Shops Volunteer",
+    color: "#FFEE00",
+    bgColor: "#004A99",
+    accentColor: "#FFEE00",
+    tagline: "The soul of a treasure hunter. Considers Vinnies a second home. The finds are great. The company's better.",
+    about: "You've got an eye for a good find and a gift for making people feel welcome. A shift at Vinnies isn't just sorting stock. It's catching up with the crew, helping a stranger find something they didn't know they needed and leaving feeling genuinely good about your morning.",
+    benefit: "Connection, conversation and friendships that last. Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Turns out, giving a morning a week is one of the best things you can do for yourself.",
+    cta: "Sound like you? Register to volunteer.",
+    ctaUrl: "https://www.vinnies.org.au/vic/get-involved/join-us/volunteers/vinnies-shops",
+    ctaFlag: false
+  },
+  GL: {
+    name: "The Good Listener",
+    role: "Vinnies Call Centre Volunteer",
+    color: "#FFEE00",
+    bgColor: "#004A99",
+    accentColor: "#FFEE00",
+    tagline: "Calm when it counts. One call can change a life. The person on the other end needed someone: you were there.",
+    about: "You don't need to have all the answers. You just need to show up, listen and care. It turns out, that's exactly what people need most.",
+    benefit: "The knowledge that your voice was the one someone needed to hear. The satisfaction of connecting a person in crisis to the help that changes everything. Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Turns out, being there for others is one of the best things you can do for yourself.",
+    cta: "Sound like you? Register to volunteer.",
+    ctaUrl: "https://www.vinnies.org.au/vic/get-involved/join-us/volunteers/welfare-call-centre-box-hill",
+    ctaFlag: false
+  },
+  GM: {
+    name: "The Good Mate",
+    role: "Vinnies Soup Van Volunteer",
+    color: "#FFEE00",
+    bgColor: "#004A99",
+    accentColor: "#FFEE00",
+    tagline: "You serve hot meals with your hands and your heart. And you always stay for the conversation.",
+    about: "You're not the type to sit on the sidelines. You want to be in it, hands on, doing something that matters right now. Not next year. Tonight. And you'll find your people in the Vannies you work alongside.",
+    benefit: "The conversations that happen over a hot meal stay with you long after the shift ends. The people you meet, the stories you hear and the moments of genuine human connection. That's what keeps Vannies coming back. Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Turns out, showing up for others is one of the best things you can do for yourself.",
+    cta: "Sound like you? Register to volunteer.",
+    ctaUrl: "https://www.vinnies.org.au/vic/get-involved/join-us/volunteers/soup-vans",
+    ctaFlag: false
+  },
+  GI: {
+    name: "The Good Influence",
+    role: "Vinnies Education Volunteer",
+    color: "#FFEE00",
+    bgColor: "#004A99",
+    accentColor: "#FFEE00",
+    tagline: "Your experience is someone else's opportunity. You show up, you share what you know and a young person leaves believing they can.",
+    about: "You remember the person who believed in you before you believed in yourself. Now you're that person. Patient, present and genuinely giving. You sit with a young person, work through their schoolwork together and build the kind of confidence that follows them into the classroom and beyond.",
+    benefit: "You'll see the shift happen in real time. A young person who couldn't do it last week, doing it this week. Watching their confidence grow, not just in their schoolwork but in themselves, is something you carry home every single time. Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Turns out, helping others grow is one of the best things you can do for yourself.",
+    cta: "Sound like you? Register to volunteer.",
+    ctaUrl: "https://www.vinnies.org.au/vic/get-involved/join-us/volunteers/education",
+    ctaFlag: false
+  },
+  GC: {
+    name: "The Good Counsel",
+    role: "Vinnies NILs Volunteer",
+    color: "#FFEE00",
+    bgColor: "#004A99",
+    accentColor: "#FFEE00",
+    tagline: "Most people don't talk about money, but numbers are your language. Your skills are someone else's way out.",
+    about: "Most people find money conversations uncomfortable. You find them clarifying. You help people on low incomes access the things they need. A fridge, a washing machine, a car repair. Fair, interest-free loans with no judgment and no catches. Just practical help that restores a little dignity and a lot of relief.",
+    benefit: "The satisfaction of solving a real problem for a real person. You cut through the bureaucracy and give someone access to what they actually need (and often what the rest of us take for granted). Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Turns out, giving people a fair go is one of the best things you can do for yourself.",
+    cta: "Sound like you? Register to volunteer.",
+    ctaUrl: "#",
+    ctaFlag: true
+  },
+  GN: {
+    name: "The Good Neighbour",
+    role: "Vinnies Member",
+    color: "#FFEE00",
+    bgColor: "#004A99",
+    accentColor: "#FFEE00",
+    tagline: "Community isn't something you talk about. It's something you do, every week, without expecting anything back.",
+    about: "You're the kind of person who shows up. Not once, not when it's convenient, but every week, for the people in your community who need it most. No judgment. Just a genuine belief that everyone deserves to feel looked after.",
+    benefit: "You'll see people improve, week by week. Watch them smile when they didn't used to. And one day they won't need the visits anymore. That's yours to keep. Research shows volunteers score 8.3 points higher in wellbeing and life satisfaction than non-volunteers. Turns out, being there for your community is one of the best things you can do for yourself.",
+    cta: "Sound like you? Become a member.",
+    ctaUrl: "https://www.vinnies.org.au/vic/get-involved/membership",
+    ctaFlag: false
+  }
+};
+
+const questions = [
+  {
+    text: "Your ideal Sunday morning involves...",
+    options: [
+      { text: "A good op shop rummage, honestly.", personas: ["GS"] },
+      { text: "Doing something quietly useful. Making a real difference to one person's day. That's a good Sunday.", personas: ["GL","GC","GN","GI"] },
+      { text: "Getting out, getting amongst it. Somewhere busy, hands on, people around you.", personas: ["GM"] }
+    ]
+  },
+  {
+    text: "The kind of place you'd happily spend a few hours every week...",
+    options: [
+      { text: "Busy, familiar and full of people who make you laugh.", personas: ["GS"] },
+      { text: "Out in it, sleeves rolled up, full do-gooder energy.", personas: ["GM"] },
+      { text: "Somewhere small, focused and built on genuinely meaningful conversations.", personas: ["GL","GC","GN","GI"] }
+    ]
+  },
+  {
+    text: "You know it's been a good day when...",
+    options: [
+      { text: "Whilst op shopping, you found exactly what you were looking for. And helped someone else find what they didn't know they needed.", personas: ["GS"] },
+      { text: "You did something real today. Something that mattered. And you're pleasantly worn out because of it.", personas: ["GM"] },
+      { text: "You helped someone work through something that was weighing on them. And you could see the difference it made.", personas: ["GL","GC","GN","GI"] }
+    ]
+  },
+  {
+    text: "A friend is going through a tough time. Your instinct is to...",
+    options: [
+      { text: "Show up with something thoughtful, something funny or something from an op shop. Usually all three.", personas: ["GS"] },
+      { text: "Show up with food and just be there. You don't need to fix it.", personas: ["GM"] },
+      { text: "Listen properly. Ask the right questions. Help them find their own way through.", personas: ["GL","GC","GN","GI"] }
+    ]
+  },
+  {
+    text: "If you're honest, what you really care about most is...",
+    options: [
+      { text: "The everyday magic of community. Finding your people and making others feel found too. And yes, the occasional brilliant op shop discovery. Obviously.", personas: ["GS"] },
+      { text: "Being there for people doing it tough. Really listening. Helping them find a way forward.", personas: ["GL"] },
+      { text: "The next generation. Full stop. You'd give anything to set them up well.", personas: ["GI"] },
+      { text: "Knowing your neighbours. The ones on your street and the ones doing it tough a few doors down.", personas: ["GN"] },
+      { text: "The belief that financial security shouldn't be a privilege. And the skills to help make it more accessible.", personas: ["GC"] }
+    ]
+  }
+];
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+
+let currentQ = 0;
+let scores = { GS: 0, GL: 0, GM: 0, GI: 0, GC: 0, GN: 0 };
+let quizStarted = false;
+
+// ─── GA4 TRACKING ───────────────────────────────────────────────────────────
+
+function track(eventName, params) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', eventName, params || {});
+  }
+}
+
+// ─── RENDER QUESTION ────────────────────────────────────────────────────────
+
+function renderQuestion(index) {
+  const q = questions[index];
+  const card = document.getElementById('question-card');
+  const letters = ['A','B','C','D','E'];
+
+  // Progress
+  const pct = Math.round((index / questions.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `Question ${index + 1} of ${questions.length}`;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-wrap').style.display = 'block';
+
+  card.style.display = 'block';
+  document.getElementById('result-card').style.display = 'none';
+  document.getElementById('loading').style.display = 'none';
+
+  card.innerHTML = `
+    <div class="question-number">Question ${index + 1} of ${questions.length}</div>
+    <div class="question-text">${q.text}</div>
+    <div class="options">
+      ${q.options.map((opt, i) => `
+        <button class="option" onclick="selectAnswer(${i})" data-index="${i}">
+          <div class="option-letter">${letters[i]}</div>
+          <div class="option-text">${opt.text}</div>
+        </button>
+      `).join('')}
+    </div>
+  `;
+
+  // Fire quiz_started on first question
+  if (index === 0 && !quizStarted) {
+    quizStarted = true;
+    track('quiz_started', { quiz_name: 'whats_your_calling' });
+  }
+}
+
+// ─── SELECT ANSWER ──────────────────────────────────────────────────────────
+
+function selectAnswer(optionIndex) {
+  const q = questions[currentQ];
+  const option = q.options[optionIndex];
+
+  // Visual feedback
+  document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+  document.querySelector(`.option[data-index="${optionIndex}"]`).classList.add('selected');
+
+  // Track question answer
+  track('question_answered', {
+    question_number: currentQ + 1,
+    answer_index: optionIndex,
+    personas_scored: option.personas.join(',')
+  });
+
+  // Score
+  option.personas.forEach(p => { scores[p] += 1; });
+
+  // Next
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < questions.length) {
+      renderQuestion(currentQ);
+    } else {
+      showLoading();
+    }
+  }, 300);
+}
+
+// ─── LOADING ────────────────────────────────────────────────────────────────
+
+function showLoading() {
+  document.getElementById('question-card').style.display = 'none';
+  document.getElementById('progress-wrap').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+  setTimeout(showResult, 1800);
+}
+
+// ─── RESULT ─────────────────────────────────────────────────────────────────
+
+function showResult() {
+  // Find winner
+  let winner = Object.entries(scores).sort((a,b) => b[1] - a[1])[0][0];
+  const p = personas[winner];
+
+  document.getElementById('loading').style.display = 'none';
+
+  // Update progress to 100%
+  document.getElementById('progress-wrap').style.display = 'block';
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-text').textContent = 'Your result';
+  document.getElementById('progress-pct').textContent = '100%';
+
+  // Track persona revealed
+  track('persona_revealed', {
+    persona_name: p.name,
+    persona_id: winner
+  });
+
+  const resultCard = document.getElementById('result-card');
+  resultCard.style.display = 'block';
+
+  const ctaSection = p.ctaFlag
+    ? `<div class="cta-flag">⚠️ FLAG: No URL yet for The Good Counsel — add NILs registration link here before going live.</div>
+       <a href="#" class="cta-button cta-primary" style="background:${p.bgColor}; color:white; pointer-events:none; opacity:0.6;">Registration link coming soon</a>`
+    : `<a href="${p.ctaUrl}" class="cta-button cta-primary" style="background:${p.bgColor}; color:white;" target="_blank" onclick="track('cta_clicked', {persona_name:'${p.name}', persona_id:'${winner}'})">${p.cta}</a>`;
+
+  const pageUrl = encodeURIComponent(window.location.href + '?persona=' + winner);
+  const shareText = encodeURIComponent(`I just found out I'm ${p.name} — a ${p.role}. What's your calling? Take the Vinnies quiz:`);
+
+  resultCard.innerHTML = `
+    <div class="result-hero" style="background: ${p.bgColor};">
+      <div class="result-eyebrow">Your calling is...</div>
+      <div class="result-persona-name">${p.name}</div>
+      <div class="result-role">${p.role}</div>
+      <div class="result-tagline">"${p.tagline}"</div>
+    </div>
+    <div class="result-body">
+      <div class="result-section">
+        <div class="result-section-label">About you</div>
+        <p>${p.about}</p>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-section">
+        <div class="result-section-label">What you'll get out of it</div>
+        <p>${p.benefit}</p>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-section">
+        <div class="result-section-label">Ready to get started?</div>
+        ${ctaSection}
+      </div>
+      <div class="share-section">
+        <div class="share-label">Share your result</div>
+        <div class="share-buttons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${shareText}" target="_blank" class="share-btn share-fb" onclick="track('share_clicked', {platform:'facebook', persona_name:'${p.name}'})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}" target="_blank" class="share-btn share-li" onclick="track('share_clicked', {platform:'linkedin', persona_name:'${p.name}'})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" class="share-btn share-ig" onclick="track('share_clicked', {platform:'instagram', persona_name:'${p.name}'})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+      <button class="retake-btn" onclick="retakeQuiz()">Take the quiz again</button>
+    </div>
+  `;
+
+  // Scroll to result
+  resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ─── RETAKE ─────────────────────────────────────────────────────────────────
+
+function retakeQuiz() {
+  currentQ = 0;
+  scores = { GS: 0, GL: 0, GM: 0, GI: 0, GC: 0, GN: 0 };
+  quizStarted = false;
+  document.getElementById('result-card').style.display = 'none';
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── CHECK FOR SHARED PERSONA IN URL ────────────────────────────────────────
+
+function checkSharedPersona() {
+  const params = new URLSearchParams(window.location.search);
+  const sharedPersona = params.get('persona');
+  if (sharedPersona && personas[sharedPersona]) {
+    // Show result directly then offer to take quiz
+    scores[sharedPersona] = 5;
+    document.getElementById('progress-wrap').style.display = 'none';
+    document.getElementById('question-card').style.display = 'none';
+    showResult();
+    track('inbound_share', { persona_id: sharedPersona, persona_name: personas[sharedPersona].name });
+    return true;
+  }
+  return false;
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+
+if (!checkSharedPersona()) {
+  renderQuestion(0);
+}
+</script>
+</body>
+</html>
