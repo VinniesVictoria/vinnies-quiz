@@ -768,10 +768,14 @@ function showResult() {
   const resultCard = document.getElementById('result-card');
   resultCard.style.display = 'block';
 
+  const utm = '?utm_source=Organic_Social&utm_medium=Meta&utm_campaign=NVW26VIC';
+  const ctaUrlWithUtm = p.ctaUrl + (p.ctaUrl.includes('?') ? '&' : '?') + 'utm_source=Organic_Social&utm_medium=Meta&utm_campaign=NVW26VIC';
+  const exploreUrl = 'https://www.vinnies.org.au/vic/get-involved/volunteering-opportunities' + utm;
+
   const ctaSection = p.ctaFlag
     ? `<div class="cta-flag">⚠️ FLAG: No URL yet for The Good Counsel — add NILs registration link here before going live.</div>
        <a href="#" class="cta-button cta-primary" style="background:${p.bgColor}; color:white; pointer-events:none; opacity:0.6;">Registration link coming soon</a>`
-    : `<a href="${p.ctaUrl}" class="cta-button cta-primary" style="background:${p.bgColor}; color:white;" target="_blank" onclick="track('cta_clicked', {persona_name:'${p.name}', persona_id:'${winner}'})">${p.cta}</a>`;
+    : `<a href="${ctaUrlWithUtm}" class="cta-button cta-primary" style="background:${p.bgColor}; color:white;" target="_blank" onclick="track('cta_clicked', {persona_name:'${p.name}', persona_id:'${winner}'})">${p.cta}</a>`;
 
   const pageUrl = encodeURIComponent(window.location.href + '?persona=' + winner);
   const shareText = encodeURIComponent(`I just found out I'm ${p.name} — a ${p.role}. What's your calling? Take the Vinnies quiz:`);
@@ -785,7 +789,7 @@ function showResult() {
     </div>
     <div class="result-body">
       <div class="result-section">
-        <div class="result-section-label">About you</div>
+        <div class="result-section-label" style="font-size:16px; letter-spacing:1px;">About you</div>
         <p>${p.about}</p>
       </div>
       <div class="result-divider"></div>
@@ -795,9 +799,8 @@ function showResult() {
       </div>
       <div class="result-divider"></div>
       <div class="result-section">
-        <div class="result-section-label">Ready to get started?</div>
         ${ctaSection}
-        <p style="margin-top:16px; font-size:14px; color:#666; text-align:center;">Or <a href="https://www.vinnies.org.au/vic/get-involved/volunteering-opportunities" target="_blank" style="color:#004A99; font-weight:600;">explore all volunteer opportunities at Vinnies</a>.</p>
+        <p style="margin-top:16px; font-size:14px; color:#666; text-align:center;">Or <a href="${exploreUrl}" target="_blank" style="color:#004A99; font-weight:600;">explore all volunteer opportunities at Vinnies</a>.</p>
       </div>
       <div class="share-section">
         <div class="share-label">Share your result</div>
