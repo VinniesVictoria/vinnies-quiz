@@ -832,8 +832,10 @@ function showResult() {
     </div>
   `;
 
-  // Scroll to result
-  resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Only scroll on mobile to avoid jarring jump on desktop
+  if (window.innerWidth < 768) {
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 // ─── RETAKE ─────────────────────────────────────────────────────────────────
